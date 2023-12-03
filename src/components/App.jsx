@@ -7,6 +7,7 @@ const App = () => {
   const [state, setState] = useState({
     contacts: [],
     name: '',
+    number: '',
   });
 
   const handleInputChange = e => {
@@ -20,19 +21,21 @@ const App = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (state.name.trim() === '') {
-      alert('Please enter a valid name.');
+    if (state.name.trim() === '' || state.number.trim() === '') {
+      alert('Please enter valid name and number.');
       return;
     }
 
     const newContact = {
       id: nanoid(),
       name: state.name.trim(),
+      number: state.number.trim(),
     };
 
     setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
       name: '',
+      number: '',
     }));
   };
 
@@ -41,6 +44,7 @@ const App = () => {
       <h1>Contact Book App</h1>
       <ContactForm
         name={state.name}
+        number={state.number}
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
       />
