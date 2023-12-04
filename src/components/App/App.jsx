@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
+import ContactForm from '../ContactFrom/ContactForm';
+import ContactList from '../ContactList/ContactList';
+import './App.css';
 
 class App extends Component {
   state = {
@@ -77,7 +78,7 @@ class App extends Component {
     );
 
     return (
-      <div>
+      <div className="wrapper">
         <h1>Contact Book App</h1>
         <ContactForm
           name={name}
@@ -85,7 +86,7 @@ class App extends Component {
           handleInputChange={this.handleInputChange}
           handleSubmit={this.handleSubmit}
         />
-        <label>
+        <label className="filter">
           Filter by name:
           <input
             type="text"

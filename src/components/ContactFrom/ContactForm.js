@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import './ContactForm.css';
 
 class ContactForm extends Component {
   render() {
     const { name, number, handleInputChange, handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
-        <label>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <label className="form-input">
           Name:
           <input
             type="text"
@@ -17,7 +18,7 @@ class ContactForm extends Component {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        <label className="form-input">
           Phone number:
           <input
             type="tel"
@@ -29,7 +30,9 @@ class ContactForm extends Component {
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit">Add Contact</button>
+        <button type="submit" className="button-add">
+          Add Contact
+        </button>
       </form>
     );
   }
