@@ -32,13 +32,12 @@ class App extends Component {
       return;
     }
 
-    // Sprawdź, czy kontakt już istnieje
     const isContactExist = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
     if (isContactExist) {
-      alert(`"${name}" is already in contacts.`);
+      alert(`Contact with the name "${name}" already exists.`);
       return;
     }
 
@@ -60,6 +59,12 @@ class App extends Component {
     this.setState({
       filter: value,
     });
+  };
+
+  handleDeleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
   };
 
   render() {
@@ -89,7 +94,10 @@ class App extends Component {
             onChange={this.handleFilterChange}
           />
         </label>
-        <ContactList contacts={filteredContacts} />
+        <ContactList
+          contacts={filteredContacts}
+          onDeleteContact={this.handleDeleteContact}
+        />
       </div>
     );
   }
