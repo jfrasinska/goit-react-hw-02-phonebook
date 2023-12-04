@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ContactList = ({ contacts }) => {
-  return (
-    <ul>
-      {contacts.map(contact => (
-        <li key={contact.id}>
-          <p>Name: {contact.name}</p>
-          <p>Phone: {contact.number}</p>
-        </li>
-      ))}
-    </ul>
-  );
-};
+class ContactList extends Component {
+  render() {
+    const { contacts } = this.props;
+    return (
+      <ul>
+        {contacts.map(contact => (
+          <li key={contact.id}>
+            <p>Name: {contact.name}</p>
+            <p>Phone: {contact.number}</p>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
 
 export default ContactList;
